@@ -7,12 +7,22 @@ import { CommentNewComponent } from './components/comment-new/comment-new.compon
 import { InquirySectionComponent } from './components/inquiry-section/inquiry-section.component';
 import { RegisterCourseComponent } from './components/register-course/register-course.component';
 import { RequestConsultComponent } from './components/request-consult/request-consult.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'approve', component: ApproveStudentComponent},
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'approve',
+    component: ApproveStudentComponent,
+    canActivate: [AuthGuard]
+
+  },
   {path: 'comment', component: CommentNewComponent},
   {path: 'inquiry', component: InquirySectionComponent},
   {path: 'course', component: RegisterCourseComponent},
