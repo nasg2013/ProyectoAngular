@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <ng-template ngFor let-item [ngForOf]="inquiries" let-i="index">
+            <div *ngIf="userId == inquiries[i].teacherid" class="col-lg-4 col-md-6 col-sm-12 mt-5 animated fadeInDownBig">
+                <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">
+                    <div class="card-body">
+                        <a class="btn btn-outline-light m-2">{{inquiries[i].inquiryId}} </a>
+                        <h6>Enviado por:</h6>
+                        <ng-template ngFor let-item [ngForOf]="users" let-u="index">
+                            <h4 *ngIf="users[u].usersId == inquiries[i].creationusersid " class="card-title card-header">{{ users[u].name }}</h4>
+                        </ng-template>
+                        <h6>Mensaje:</h6>
+                        <p class="card-text card-header">{{ inquiries[i].content}}</p>
+                        <h6>Respuesta:</h6>
+                        <ng-template ngFor let-item [ngForOf]="inquiriesResponse" let-j="index">
+                            <p class="card-text card-header" *ngIf="inquiries[i].inquiryId == inquiriesResponse[j].inquiryid">{{ inquiriesResponse[j].content }}</p>
+                        </ng-template>
+                        <a title="Responder" class="btn btn-outline-light btn-lg" (click)="response(inquiries[i].inquiryId)">Responder</a>
+                        <br>
+                        <!-- 
+<a title="Eliminar" class="btn btn-outline-danger m-1 btn-sm" (click)="delete(inquiries[i].inquiryId)">Eliminar</a>
+                       -->
+
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
