@@ -26,9 +26,6 @@ export class InquiryService {
   }
 
   addInquiry (inquiry: InquiryModel): Observable<any> {
-
-    console.log(inquiry);
-
     return this.http.post<any>(this._url, JSON.stringify(inquiry), httpOptions).pipe(
       tap((inquiry) => console.log('added inquiry')),
       catchError(this.handleError<any>('addInquiry'))
