@@ -25,6 +25,20 @@ export class UsersService {
     return body || { };
   }
 
+  approveUser(id: number): Observable<any>{
+    return this.http.get(this._url + 'role/' + id).pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>('no user by id'))
+      );
+  }
+  
+  addTeacher(teacher: UserModel): Observable<any>{
+    return this.http.post<any>(this._url + 'addTeacher/', JSON.stringify(teacher), httpOptions).pipe(
+      tap((inquiry) => console.log('added teacher')),
+      catchError(this.handleError<any>('error add teacher'))
+    );
+  }
+
   getById(id): Observable<any> {
     return this.http.get(this._url + 'id/' + id).pipe(
       map(this.extractData),
@@ -36,6 +50,13 @@ export class UsersService {
     return this.http.get(this._url + 'getAll').pipe(
       map(this.extractData),
       catchError(this.handleError<any>('getAll'))
+      );
+  }
+
+  getNewUsers(): Observable<any> {
+    return this.http.get(this._url + 'getNewUser').pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>('getNewUser'))
       );
   }
 

@@ -9,8 +9,14 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink='/inquiry'>Hacer consultas</a>
             </li>
-            <li *ngIf="user.password === 'Teacher'" class="nav-item" routerLinkActive="active">
+            <li *ngIf="user.password !== 'Student'" class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink='/inquiry-response'>Responder consultas</a>
+            </li>
+            <li *ngIf="user.password === 'Admin'" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink='/approve-student'>Aceptar Estudiante</a>
+            </li>
+            <li *ngIf="user.password === 'Admin'" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink='/create-user'>Registrar Profesor</a>
             </li>
         </ul>
     </div>
