@@ -70,8 +70,24 @@ export class SignUpComponent implements OnInit {
 
       this.authService.adduser(this.user)
       .subscribe(resp=>{
-        Swal.close();
-        this.router.navigate(['/login']);
+
+         if(resp){
+           
+          Swal.close();
+          Swal.fire(
+            'Registro exitoso',
+            'Tu solicitud está en trámite',
+            'success'
+          )
+          this.router.navigate(['/login']);
+        }else{
+          Swal.fire({
+            text: 'Correo no válido...',
+            icon: 'error',
+            title: 'Error al registrar'
+         });
+          
+        }
       })
     }
   }
