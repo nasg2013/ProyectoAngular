@@ -45,4 +45,10 @@ public class UsersController {
     public void save(@RequestBody Users user) {
         service.save(user);
     }
+
+    @RequestMapping(path = "/teacher", method = RequestMethod.POST)
+    public Users addTeacher(@RequestBody Users user) {
+        return service.addTeacher(user);
+    }
+
 }

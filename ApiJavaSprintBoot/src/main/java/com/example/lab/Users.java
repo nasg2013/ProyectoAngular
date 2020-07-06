@@ -23,6 +23,26 @@ import javax.persistence.*;
                         mode = ParameterMode.IN,
                         name = "@Password",
                         type = String.class)})
+@NamedStoredProcedureQuery( name = "Users.postTeacher",
+        procedureName = "InsertTeacher",
+        parameters = {
+                @StoredProcedureParameter(
+                        mode = ParameterMode.IN,
+                        name = "@Name",
+                        type = String.class),
+                @StoredProcedureParameter(
+                        mode = ParameterMode.IN,
+                        name = "@Lastname",
+                        type = String.class),
+                @StoredProcedureParameter(
+                        mode = ParameterMode.IN,
+                        name = "@Email",
+                        type = String.class),
+                @StoredProcedureParameter(
+                        mode = ParameterMode.IN,
+                        name = "@Password",
+                        type = String.class)})
+
 public class Users {
 
     private int usersId;

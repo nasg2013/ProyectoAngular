@@ -32,4 +32,8 @@ public class UsersService {
     public void save(Users user) {
         repository.save(user);
     }
+
+    public Users addTeacher(Users user) {
+        return repository.postTeacher(user.getName(),user.getLastname(),user.getEmail(),user.getPassword());
+    }
 }
