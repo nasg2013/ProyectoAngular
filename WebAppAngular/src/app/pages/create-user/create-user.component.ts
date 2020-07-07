@@ -45,15 +45,15 @@ export class CreateUserComponent implements OnInit {
       this.userService.addTeacher(this.user)
       .subscribe(resp=>{
 
-         if(resp){
-           
+         if(resp){           
           Swal.close();
           Swal.fire(
             'Registro exitoso',
             'Tu solicitud está en trámite',
             'success'
           )
-          this.router.navigate(['/login']);
+          this.loadData();
+          this.router.navigate(['/create-user']);
         }else{
           Swal.fire({
             text: 'Correo no válido...',
@@ -66,6 +66,15 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
+  loadData(){
+    this.form.reset({
+      lastname: '',
+      name:    '',
+      password: '',
+      email:    ''
+    })
+  }
+  
   doForm(){
 
     this.form = this.fb.group({
