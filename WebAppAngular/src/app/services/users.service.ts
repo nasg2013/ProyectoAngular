@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
+import { UserRoleModel } from '../models/user-role.model';
 
 
 const httpOptions = {
@@ -18,6 +19,7 @@ const httpOptions = {
 export class UsersService {
 
   private _url = 'http://localhost:8080/api/users/';
+  private _urlrole = 'http://localhost:8080/api/role/';
   constructor(private http: HttpClient) { }
 
   private extractData(res: Response) {
@@ -25,11 +27,11 @@ export class UsersService {
     return body || { };
   }
 
-  approveUser(id: number): Observable<any>{
-    return this.http.get(this._url + 'role/' + id).pipe(
-      map(this.extractData),
-      catchError(this.handleError<any>('no user by id'))
-      );
+  approveUser(userrole: UserRoleModel): Observable<any>{
+    return this.http.post<any>(this._urlrole , JSON.stringify(userrole), httpOptions).pipe(
+      tap((inquiry) => console.log('approved student')),
+      catchError(this.handleError<any>('error approved student'))
+    );
   }
   
   addTeacher(teacher: UserModel): Observable<any>{
