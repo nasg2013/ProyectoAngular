@@ -33,7 +33,7 @@ export class UsersService {
   }
   
   addTeacher(teacher: UserModel): Observable<any>{
-    return this.http.post<any>(this._url + 'addTeacher/', JSON.stringify(teacher), httpOptions).pipe(
+    return this.http.post<any>(this._url + 'teacher/', JSON.stringify(teacher), httpOptions).pipe(
       tap((inquiry) => console.log('added teacher')),
       catchError(this.handleError<any>('error add teacher'))
     );
