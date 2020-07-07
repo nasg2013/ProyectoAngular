@@ -23,7 +23,7 @@ import javax.persistence.*;
                         mode = ParameterMode.IN,
                         name = "@Password",
                         type = String.class)})
-@NamedStoredProcedureQuery( name = "Users.postTeacher",
+@NamedStoredProcedureQuery( name = "Users.addTeacher",
         procedureName = "InsertTeacher",
         parameters = {
                 @StoredProcedureParameter(
@@ -42,6 +42,8 @@ import javax.persistence.*;
                         mode = ParameterMode.IN,
                         name = "@Password",
                         type = String.class)})
+@NamedStoredProcedureQuery( name="Users.getNewUser",
+        procedureName = "SelectUsersNewStudents")
 
 public class Users {
 

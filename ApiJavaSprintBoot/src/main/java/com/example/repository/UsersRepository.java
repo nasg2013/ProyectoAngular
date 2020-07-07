@@ -19,6 +19,9 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
     Users getUsersByEmail(@Param("email") String email,@Param("password") String password);
 
     @Query(value = "{ call InsertTeacher(:name,:lastname,:email,:password)}", nativeQuery = true)
-    Users postTeacher(@Param("name") String name, @Param("lastname") String lastname, @Param("email") String email, @Param("password") String password);
+    Users addTeacher(@Param("name") String name, @Param("lastname") String lastname, @Param("email") String email, @Param("password") String password);
+
+    @Query(value="SelectUsersNewStudents", nativeQuery = true)
+    List<Users> getNewUser();
 
 }

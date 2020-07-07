@@ -16,8 +16,8 @@ import java.util.NoSuchElementException;
 @RequestMapping(path = "/api/users")
 public class UsersController {
 
-    @Autowired
-    private UsersService service;
+        @Autowired
+        private UsersService service;
 
     @GetMapping("/getAll")
     public List<Users> list() {
@@ -50,5 +50,12 @@ public class UsersController {
     public Users addTeacher(@RequestBody Users user) {
         return service.addTeacher(user);
     }
+
+    @GetMapping("/getNewUser")
+    public List<Users> getNewUser() {
+        return service.getNewUser();
+    }
+
+
 
 }

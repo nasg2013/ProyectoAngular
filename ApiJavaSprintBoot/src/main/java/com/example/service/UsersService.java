@@ -34,6 +34,11 @@ public class UsersService {
     }
 
     public Users addTeacher(Users user) {
-        return repository.postTeacher(user.getName(),user.getLastname(),user.getEmail(),user.getPassword());
+        return repository.addTeacher(user.getName(),user.getLastname(),user.getEmail(),user.getPassword());
     }
+
+    public List<Users> getNewUser(){
+        return repository.getNewUser();
+    }
+
 }
