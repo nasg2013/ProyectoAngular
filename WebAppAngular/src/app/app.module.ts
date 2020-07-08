@@ -31,7 +31,7 @@ import { CourseAddComponent } from './pages/course-add/course-add.component';
     HomeComponent,
     ApproveStudentComponent,
     CreateUserComponent,
-    ProfileComponent
+    ProfileComponent,
     CourseComponent,
     CourseAddComponent
   ],
