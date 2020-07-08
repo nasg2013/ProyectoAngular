@@ -27,9 +27,9 @@ export class CourseComponent implements OnInit {
       this.courses = data;
     });
   }
-  /*
+  
   add() {
     this.router.navigate(['/course-add']);
   }
-  */
+  
 }
