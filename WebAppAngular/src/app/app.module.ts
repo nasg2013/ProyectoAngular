@@ -15,6 +15,7 @@ import { InquiryResponseComponent } from './pages/inquiry-response/inquiry-respo
 import { HomeComponent } from './pages/home/home.component';
 import { ApproveStudentComponent } from './pages/approve-student/approve-student.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { CourseComponent } from './pages/course/course.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
     InquiryResponseComponent,
     HomeComponent,
     ApproveStudentComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
