@@ -14,7 +14,6 @@ import { InquiryService } from '../../services/inquiry.service';
 export class NavbarComponent implements OnInit {
 
   user: any;
-  isLogin: boolean;
   userId: number;
   cantMessage:number=0;
   inquiries: any = [];
