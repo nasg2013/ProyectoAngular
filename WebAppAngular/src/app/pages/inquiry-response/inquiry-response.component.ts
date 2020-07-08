@@ -44,14 +44,12 @@ export class InquiryResponseComponent implements OnInit {
   getAllInquiriesResponse() {
     this.inquiryResponseService.getAll().subscribe((data: {}) => {
       this.inquiriesResponse = data;
-      console.log(this.inquiriesResponse);
     });
   }
 
   getAllInquiries() {
     this.inquiryService.getAll().subscribe((data: {}) => {
       this.inquiries = data;
-      console.log(this.inquiries);
     });
   }
 
