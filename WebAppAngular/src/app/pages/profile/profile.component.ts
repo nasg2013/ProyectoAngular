@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
 import { UserModel } from '../../models/user.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
 import { AuthService } from '../../services/auth.service';
-import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   user: UserModel;
   form: FormGroup;
 
-  constructor( private auth: AuthService, private router: Router, private authService: AuthService, private profile: UsersService, private fb: FormBuilder)  { 
+  constructor( private router: Router, private auth: AuthService, private profile: UsersService, private fb: FormBuilder) { 
     this.user = new UserModel();
     this.loadProfile();
-    this.doForm();  
-       
+    this.doForm(); 
   }
 
   ngOnInit(): void {
@@ -40,13 +39,10 @@ export class HomeComponent implements OnInit {
         allowOutsideClick: false
       });
   
-      this.user.usersId = 0;
       this.user.name = this.form.value.name;
       this.user.lastname = this.form.value.lastname;
-      this.user.email = this.form.value.email;
-      this.user.password = this.form.value.password;
 
-      this.authService.adduser(this.user)
+      this.profile.updateuser(this.user)
       .subscribe(resp=>{
 
          if(resp){
@@ -54,28 +50,29 @@ export class HomeComponent implements OnInit {
           Swal.close();
           Swal.fire(
             'Registro exitoso',
-            'Tu solicitud está en trámite',
+            'Datos actualizados',
             'success'
           )
-          this.router.navigate(['/login']);
+          this.loadProfile();
         }else{
           Swal.fire({
-            text: 'Correo no válido...',
+            text: 'Upps...',
             icon: 'error',
-            title: 'Error al registrar'
+            title: 'Intenta de nuevo'
          });
           
         }
       })
+      
     }
   }
-  
+
   doForm(){
     this.form = this.fb.group({
       lastname: [this.user.lastname, [Validators.required, Validators.minLength(1), Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ]{2,254}')]],
       name:     [this.user.name, [Validators.required, Validators.minLength(1), Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ]{2,254}')]],
-      password: [this.user.password, [Validators.required, Validators.minLength(8), Validators.pattern('[a-zA-Z1234567890]{2,254}')]],
-      email:    [this.user.email, [Validators.required]]
+      password: [this.user.password],
+      email:    [this.user.email]
     });
   }
 
@@ -89,7 +86,6 @@ export class HomeComponent implements OnInit {
   }
 
   delete(usersId){
-
    Swal.fire({
       title: '¿Esta seguro?',
       text: "Va a darse de baja del sistema",
@@ -104,8 +100,7 @@ export class HomeComponent implements OnInit {
           'Darse de baja',
           'Baja realizada',
           'warning'
-        )
-       
+        )       
         this.profile.deleteRole(usersId)
         .subscribe(resp=>{
           this.auth.logout();

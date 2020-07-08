@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ApproveStudentComponent } from './pages/approve-student/approve-student.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate:[ AuthGuard] },
   { path: 'approve-student', component: ApproveStudentComponent, canActivate:[ AuthGuard] },
   { path: 'create-user', component: CreateUserComponent, canActivate:[ AuthGuard] },
-  { path: '**', redirectTo: 'login' }
+  { path: 'profile', component: ProfileComponent, canActivate:[ AuthGuard] },
+  { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 @NgModule({

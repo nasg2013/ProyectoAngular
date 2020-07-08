@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { UsersService } from '../../services/users.service';
 import { UserModel } from '../../models/user.model';
+import { InquiryService } from '../../services/inquiry.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,12 +15,15 @@ export class NavbarComponent implements OnInit {
 
   user: any;
   isLogin: boolean;
-  message: boolean;
+  userId: number;
+  cantMessage:number=0;
+  inquiries: any = [];
 
-  constructor( private auth: AuthService, private router:Router, private profile: UsersService) {
-    this.message = true;
+  constructor( private inquiryService: InquiryService,private auth: AuthService, private router:Router, private profile: UsersService) {
     this.user = new UserModel();
     this.loadProfile();
+    this.userId = parseInt(localStorage.getItem('token'));
+    this.getAllInquiries();
   }
   ngOnInit(): void {    
   }
@@ -35,6 +39,17 @@ export class NavbarComponent implements OnInit {
       this.user=resp;
     });
 
+  }
+
+  getAllInquiries() {
+    this.inquiryService.getAll().subscribe((data: {}) => {
+      this.inquiries = data;
+      this.inquiries.forEach(inquiry => {
+        if(inquiry.teacherid == this.userId){
+          this.cantMessage ++;
+        }
+      });
+    });
   }
 
 }
