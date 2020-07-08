@@ -16,6 +16,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ApproveStudentComponent } from './pages/approve-student/approve-student.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CourseComponent } from './pages/course/course.component';
+import { CourseAddComponent } from './pages/course-add/course-add.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ApproveStudentComponent,
     CreateUserComponent,
     ProfileComponent
+    CourseComponent,
+    CourseAddComponent
   ],
   imports: [
     BrowserModule,
