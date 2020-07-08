@@ -19,8 +19,8 @@ export class InquiryResponseComponent implements OnInit {
 
   inquiries: any = [];
   inquiriesResponse: any = [];
-  inquiryResponse: any;
   users: any = [];
+  inquiryResponse: any;
   userId: number;
 
   constructor(
@@ -44,14 +44,12 @@ export class InquiryResponseComponent implements OnInit {
   getAllInquiriesResponse() {
     this.inquiryResponseService.getAll().subscribe((data: {}) => {
       this.inquiriesResponse = data;
-      console.log(this.inquiriesResponse);
     });
   }
 
   getAllInquiries() {
     this.inquiryService.getAll().subscribe((data: {}) => {
       this.inquiries = data;
-      console.log(this.inquiries);
     });
   }
 

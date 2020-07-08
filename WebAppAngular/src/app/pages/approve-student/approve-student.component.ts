@@ -31,7 +31,30 @@ export class ApproveStudentComponent implements OnInit {
   }
 
   disapprove(usersId){
-    console.log(usersId);
+    
+    Swal.fire({
+      title: '¿Esta seguro?',
+      text: "Se va ha rechasar el estudiante",
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, rechazar!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Rechazar',
+          'Estudiante rechazado',
+          'warning'
+        )
+       
+        this.usersService.delete(usersId)
+        .subscribe(resp=>{
+          console.log(resp);
+          this.getNewsUsers();
+        })
+      }
+    })
     
   }
   approve(usersId){
@@ -49,6 +72,7 @@ export class ApproveStudentComponent implements OnInit {
           'Se le ha asignado el role de Estudiante',
           'success'
         )
+        this.getNewsUsers();
 
       }else{
 
@@ -62,10 +86,5 @@ export class ApproveStudentComponent implements OnInit {
 
       }
     });
-
-
-    console.log(usersId);
-
   }
-
 }

@@ -29,8 +29,8 @@ public class UsersService {
         return repository.getUsersByEmail(user.getEmail(),user.getPassword());
     }
 
-    public void save(Users user) {
-        repository.save(user);
+    public Users save(Users user) {
+        return repository.save(user);
     }
 
     public Users addTeacher(Users user) {
