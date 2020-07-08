@@ -42,8 +42,8 @@ public class UsersController {
 
 
     @RequestMapping(path = "/", method = RequestMethod.POST)
-    public void save(@RequestBody Users user) {
-        service.save(user);
+    public Users save(@RequestBody Users user) {
+        return service.save(user);
     }
 
     @RequestMapping(path = "/teacher", method = RequestMethod.POST)

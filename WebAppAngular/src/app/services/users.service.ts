@@ -48,6 +48,21 @@ export class UsersService {
       );
   }
 
+  delete(id): Observable<any> {
+    return this.http.delete(this._url + 'delete/' + id).pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>('no user deletedby id'))
+      );
+  }
+
+  deleteRole(id): Observable<any> {
+    return this.http.delete(this._urlrole + 'delete/' + id).pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>('no user deletedby id'))
+      );
+  }
+
+
   getAll(): Observable<any> {
     return this.http.get(this._url + 'getAll').pipe(
       map(this.extractData),

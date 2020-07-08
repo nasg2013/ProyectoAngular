@@ -53,14 +53,12 @@ export class InquiryComponent implements OnInit {
   getAllInquiries() {
     this.inquiryService.getAll().subscribe((data: {}) => {
       this.inquiries = data;
-      console.log(this.inquiries);
     });
   }
 
   getAllInquiriesResponse() {
     this.inquiryResponseService.getAll().subscribe((data: {}) => {
       this.inquiriesResponse = data;
-      console.log(this.inquiriesResponse);
     });
   }
   
@@ -79,15 +77,12 @@ export class InquiryComponent implements OnInit {
   }
   doForm(){
 
-    this.form = this.fb.group({
-      
+    this.form = this.fb.group({      
       teacher: ['-1', [Validators.required, Validators.min(1)]],
       content: ['', [Validators.required]]
     });
   }
   save(){
-    console.log(this.form);
-
     if (this.form.invalid){
       return Object.values(this.form.controls).forEach(control=>{
         control.markAllAsTouched();
