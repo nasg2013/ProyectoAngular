@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   user: UserModel;
   form: FormGroup;
 
-  constructor( private router: Router, private authService: AuthService, private profile: UsersService, private fb: FormBuilder)  { 
+  constructor( private auth: AuthService, private router: Router, private authService: AuthService, private profile: UsersService, private fb: FormBuilder)  { 
     this.user = new UserModel();
     this.loadProfile();
     this.doForm();  
@@ -93,8 +93,32 @@ export class HomeComponent implements OnInit {
 
   }
 
-  delete(userId){
-    console.log(userId);
+  delete(usersId){
+
+
+   Swal.fire({
+      title: '¿Esta seguro?',
+      text: "Va a darse de baja del sistema",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, darse de baja!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Darse de baja',
+          'Baja realizada',
+          'warning'
+        )
+       
+        this.profile.deleteRole(usersId)
+        .subscribe(resp=>{
+          this.auth.logout();
+          this.router.navigate(['/login']);
+        })
+      }
+    })
   }
 
   get lastnameValid(){

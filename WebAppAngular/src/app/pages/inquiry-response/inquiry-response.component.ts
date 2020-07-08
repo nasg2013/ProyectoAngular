@@ -19,8 +19,8 @@ export class InquiryResponseComponent implements OnInit {
 
   inquiries: any = [];
   inquiriesResponse: any = [];
-  inquiryResponse: any;
   users: any = [];
+  inquiryResponse: any;
   userId: number;
 
   constructor(

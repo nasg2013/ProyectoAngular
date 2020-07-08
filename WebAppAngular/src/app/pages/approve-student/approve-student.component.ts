@@ -31,8 +31,7 @@ export class ApproveStudentComponent implements OnInit {
   }
 
   disapprove(usersId){
-    console.log(usersId);
-
+    
     Swal.fire({
       title: '¿Esta seguro?',
       text: "Se va ha rechasar el estudiante",
@@ -87,10 +86,5 @@ export class ApproveStudentComponent implements OnInit {
 
       }
     });
-
-
-    console.log(usersId);
-
   }
-
 }

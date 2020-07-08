@@ -77,8 +77,7 @@ export class InquiryComponent implements OnInit {
   }
   doForm(){
 
-    this.form = this.fb.group({
-      
+    this.form = this.fb.group({      
       teacher: ['-1', [Validators.required, Validators.min(1)]],
       content: ['', [Validators.required]]
     });
