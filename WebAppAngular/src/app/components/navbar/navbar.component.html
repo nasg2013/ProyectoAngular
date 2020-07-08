@@ -18,6 +18,9 @@
             <li *ngIf="user.password === 'Admin'" class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink='/create-user'>Registrar Profesor</a>
             </li>
+            <li  *ngIf="user.password !== 'Student'"  class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink='/course'>Curso</a>
+            </li>
         </ul>
     </div>
 
