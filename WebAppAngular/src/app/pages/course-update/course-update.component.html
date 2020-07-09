@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<h2 class="rubberBand">Actualizar curso</h2>
+<h2 class="animated fadeInDownBig">Actualizar curso</h2>
 
-<form [formGroup]="courseForm" (ngSubmit)="updateStudent()" #formDir="ngForm">
+<form [formGroup]="courseForm2" (ngSubmit)="updateStudent()" #formDir="ngForm">
 
     <!--<div class="form-group row">
     
@@ -15,24 +15,23 @@
     </div>-->
 
     <div class="form-group row">
-        <label class="control-label col-md-12" for="teacher_name">Nombre del profesor</label>
-        <div class="col-md-4">
-          <select class="form-control form-control-sm"  formControlName="teacher_name">
-            <option value="" selected>{{courseData.teacher_name}}</option>
-            <option *ngFor="let teacher of teachers" value="{{teacher.name}}">{{teacher.name}}</option>
-          </select><br>
-        </div>  
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'teacher_name') && formDir.submitted">
-            Nombre del profesor es requerido.
-        </span>
-      </div>
+      <label class="control-label col-md-12" for="teacher_name">Nombre del profesor</label>
+      <div class="col-md-4">
+        <select class="form-control form-control-sm" [(ngModel)]="courseData.teacher_name"  formControlName="teacher_name">  
+          <option *ngFor="let teacher of teachers" value="{{teacher.name}}">{{teacher.name}}</option>
+        </select><br>
+      </div>  
+      <span class="text-danger" *ngIf="courseForm2.hasError('required', 'teacher_name') && formDir.submitted">
+          Nombre del profesor es requerido.
+      </span>
+    </div>
     
     <div class="form-group row">
         <label class=" control-label col-md-12" for="name">Nombre del curso</label>
         <div class="col-md-4">
           <input [(ngModel)]="courseData.name" class="form-control" type="text" formControlName="name">
         </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'name') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('required', 'name') && formDir.submitted">
             Nombre del curso es requerido.
         </span>
     </div>
@@ -43,10 +42,10 @@
         <div class="col-md-4">
           <input [(ngModel)]="courseData.credit" class="form-control" type="text" formControlName="credit">
         </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'credit') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('required', 'credit') && formDir.submitted">
             Creditos es requerido.
         </span>
-        <span class="text-danger" *ngIf="courseForm.hasError('pattern', 'credit') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('pattern', 'credit') && formDir.submitted">
             Al menos un dígito.
         </span>
     </div>
@@ -56,7 +55,7 @@
         <div class="col-md-4">
           <input [(ngModel)]="courseData.description" class="form-control" type="text" formControlName="description">
         </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'description') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('required', 'description') && formDir.submitted">
             Descripción es requerido.
         </span>
     </div>
@@ -67,7 +66,7 @@
         <div class="col-md-4">
           <input [(ngModel)]="courseData.schedule" class="form-control" type="text" formControlName="schedule">
         </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'schedule') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('required', 'schedule') && formDir.submitted">
             Horario es requerido.
         </span>
     </div>
@@ -78,7 +77,7 @@
         <div class="col-md-4">
           <input [(ngModel)]="courseData.acronyn" class="form-control" type="text" formControlName="acronyn">
         </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'acronyn') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('required', 'acronyn') && formDir.submitted">
             Acrónimo es requerido.
         </span>
     </div>
@@ -88,15 +87,16 @@
         <div class="col-md-4">
           <input [(ngModel)]="courseData.schedule_consultation" class="form-control" type="text" formControlName="schedule_consultation">
         </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'schedule_consultation') && formDir.submitted">
+        <span class="text-danger" *ngIf="courseForm2.hasError('required', 'schedule_consultation') && formDir.submitted">
             Horario de consulta es requerido.
         </span>
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" class="btn btn-success">Actualizar</button>
         <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
     </div>
+
 
 </form>  
 
