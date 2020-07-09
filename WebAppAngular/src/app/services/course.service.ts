@@ -40,6 +40,27 @@ export class CourseService {
     );
   }
 
+  deleteCourse (id): Observable<any> {
+    return this.http.delete<any>(endpoint + 'apiCourse/delete/' + id, httpOptions).pipe(
+      tap(_ => console.log(`deleted course id=${id}`)),
+      catchError(this.handleError<any>('deletecourses'))
+    );
+  }
+
+  getCourse(id): Observable<any> {
+    return this.http.get(endpoint + 'apiCourse/course_avaibles/' + id).pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>('getCourseById'))
+      );
+  }
+
+  updateCourse (course): Observable<any> {
+    return this.http.put(endpoint + 'apiCourse/update/', JSON.stringify(course), httpOptions).pipe(
+      tap((student) => console.log('updated course')),
+      catchError(this.handleError<any>('updateCourse'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
