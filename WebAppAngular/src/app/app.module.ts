@@ -18,6 +18,7 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CourseComponent } from './pages/course/course.component';
 import { CourseAddComponent } from './pages/course-add/course-add.component';
+import { CourseUpdateComponent } from './pages/course-update/course-update.component';
 import { RequestConsultComponent } from './pages/request-consult/request-consult.component';
 
 
@@ -35,6 +36,7 @@ import { RequestConsultComponent } from './pages/request-consult/request-consult
     ProfileComponent,
     CourseComponent,
     CourseAddComponent,
+    CourseUpdateComponent,
     RequestConsultComponent
   ],
   imports: [

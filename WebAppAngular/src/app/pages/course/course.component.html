@@ -1,48 +1,54 @@
 <app-navbar></app-navbar>
-<div class="container">
+<h2>Lista de cursos</h2>
 
-    <div class="row m-5">
-        <h3> Course List </h3>
-        <div class="col-12 m-2 animated fadeInUpBig">
-            <div>
-                <button (click)="add()" class="btn btn-primary">
-        Add
-      </button>
-            </div>
-
-            <table class='table' *ngIf="courses">
-                <thead>
-                    <tr>
-                        <th>Course_id</th>
-                        <th>Teacher_name</th>
-                        <th>Name</th>
-                        <th>Credit</th>
-                        <th>Description</th>
-                        <th>Schedule</th>
-                        <th>Acronyn</th>
-                        <th>Schedule_consultation</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-
-                    <tr *ngFor="let c of courses; let i=index;">
-
-                        <td>{{ c.course_id }}</td>
-                        <td>{{ c.teacher_name }}</td>
-                        <td>{{ c.name }}</td>
-                        <td>{{ c.credit }}</td>
-                        <td>{{ c.description }}</td>
-                        <td>{{ c.schedule }}</td>
-                        <td>{{ c.acronyn }}</td>
-                        <td>{{ c.schedule_consultation }}</td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-
-    </div>
+<div>
+  <button (click)="add()" class="btn btn-primary">
+    Añadir
+  </button>
 </div>
+
+
+
+<table class='table' *ngIf="courses">
+  <thead>
+    <tr>
+      <th>Id del curso</th>
+      <th>Nombre del profesor</th>
+      <th>Nombre del curso</th>
+      <th>Creditos</th>
+      <th>Descripción</th>
+      <th>Horario</th>
+      <th>Acrónimo</th>
+      <th>Horario de consulta</th>
+    <th>Acción</th>>
+  </thead>
+    <tbody>
+
+      <tr *ngFor="let c of courses; let i=index;">
+
+        <td>{{ c.course_id  }}</td>
+        <td>{{ c.teacher_name  }}</td>
+        <td>{{ c.name  }}</td>
+        <td>{{ c.credit  }}</td>
+        <td>{{ c.description  }}</td>
+        <td>{{ c.schedule  }}</td>
+        <td>{{ c.acronyn  }}</td>
+        <td>{{ c.schedule_consultation  }}</td>
+
+        <td>
+          <!--<a [routerLink]="['/student-detail/', s.studentId]"> Detail </a>-->
+          <a [routerLink]="['/course-update', c.course_id]"> Edit </a>
+          <!--<button (click)="update()" class="btn btn-primary"> Editar </button>-->
+          <!--<a [routerLink]="" (click)="delete(s.studentId)"> Delete </a>-->
+          <span *ngIf="confirmDelete">
+            <span>¿Estás seguro que lo quieres borrar?</span>
+            <button class="btn btn-danger" (click)="delete(c.course_id)"> Sí</button>
+            <button class="btn btn-primary" (click)="confirmDelete=false"> No</button>
+          </span>
+          <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Borrar</button>
+        </td>
+
+      </tr>
+
+    </tbody>
+</table>  
