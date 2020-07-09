@@ -65,3 +65,5 @@ export class CourseAddComponent implements OnInit {
   get acronyn() { return this.courseForm.get('acronyn'); }
   get schedule_consultation() { return this.courseForm.get('schedule_consultation'); }
 }
+
+
