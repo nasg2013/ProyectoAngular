@@ -41,6 +41,13 @@ export class UsersService {
     );
   }
 
+  updateuser(users: UserModel): Observable<any>{
+    return this.http.put<any>(this._url + 'put/', JSON.stringify(users), httpOptions).pipe(
+      tap((inquiry) => console.log('updated user')),
+      catchError(this.handleError<any>('error update user'))
+    );
+  }
+
   getById(id): Observable<any> {
     return this.http.get(this._url + 'id/' + id).pipe(
       map(this.extractData),
@@ -61,7 +68,6 @@ export class UsersService {
       catchError(this.handleError<any>('no user deletedby id'))
       );
   }
-
 
   getAll(): Observable<any> {
     return this.http.get(this._url + 'getAll').pipe(
