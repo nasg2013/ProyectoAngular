@@ -17,6 +17,7 @@ import { ApproveStudentComponent } from './pages/approve-student/approve-student
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { CourseComponent } from './pages/course/course.component';
 import { CourseAddComponent } from './pages/course-add/course-add.component';
+import { CourseUpdateComponent } from './pages/course-update/course-update.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CourseAddComponent } from './pages/course-add/course-add.component';
     ApproveStudentComponent,
     CreateUserComponent,
     CourseComponent,
-    CourseAddComponent
+    CourseAddComponent,
+    CourseUpdateComponent
   ],
   imports: [
     BrowserModule,

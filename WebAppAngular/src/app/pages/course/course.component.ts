@@ -31,5 +31,19 @@ export class CourseComponent implements OnInit {
   add() {
     this.router.navigate(['/course-add']);
   }
+
+  update() {
+    this.router.navigate(['/course-update']);
+  }
   
+  delete(id) {
+    this.rest.deleteCourse(id)
+      .subscribe(res => {
+          this.getCourses();
+        }, (err) => {
+          console.log(err);
+        }
+      );
+  }
+
 }
