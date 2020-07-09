@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private _url = 'http://localhost:8080/api/users/';
+  private _url = 'https://demo-200709031357.azurewebsites.net/api/users/';
 
   userToken: string;
   date: any;
@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   login( user: UserModel){
-    return this.http.post<any>(this._url + 'login', JSON.stringify(user), httpOptions)
+    return this.http.post<any>(this._url + 'login/', JSON.stringify(user), httpOptions)
     .pipe(
       tap((user) => console.log('processing...')),
       catchError(this.handleError<any>('error login user')),

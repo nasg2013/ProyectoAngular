@@ -12,11 +12,14 @@ export class CourseAddComponent implements OnInit {
 
   courseForm: FormGroup;
   errorMessage: any;
+  teachers: any = [];
+
 
 
    constructor(private fb: FormBuilder, private route: ActivatedRoute,
         private rest:CourseService, private router: Router) {
         
+          
 
           this.courseForm = this.fb.group({
             course_id: 0,
@@ -36,7 +39,7 @@ export class CourseAddComponent implements OnInit {
 
 
  ngOnInit() {
-
+  this.getTeachers();
   }
 
   addCourse() {
@@ -54,6 +57,13 @@ export class CourseAddComponent implements OnInit {
 
   cancel() {
     this.router.navigate(['/course']);
+  }
+
+  
+  getTeachers() {
+    this.rest.getAll().subscribe((data: {}) => {
+      this.teachers = data;
+    });
   }
   
   /*get course_id() { return this.courseForm.get('Course_id'); }*/

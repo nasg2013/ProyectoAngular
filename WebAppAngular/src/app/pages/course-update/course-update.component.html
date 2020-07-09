@@ -3,7 +3,7 @@
 
 <form [formGroup]="courseForm" (ngSubmit)="updateStudent()" #formDir="ngForm">
 
-    <div class="form-group row">
+    <!--<div class="form-group row">
     
         <label class=" control-label col-md-12" for="teacher_name">Nombre del profesor</label>
         <div class="col-md-4">
@@ -12,7 +12,20 @@
         <span class="text-danger" *ngIf="courseForm.hasError('required', 'teacher_name') && formDir.submitted">
             Nombre del profesor es requerido.
         </span>
-    </div>
+    </div>-->
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="teacher_name">Nombre del profesor</label>
+        <div class="col-md-4">
+          <select class="form-control form-control-sm"  formControlName="teacher_name">
+            <option value="" selected>{{courseData.teacher_name}}</option>
+            <option *ngFor="let teacher of teachers" value="{{teacher.name}}">{{teacher.name}}</option>
+          </select><br>
+        </div>  
+        <span class="text-danger" *ngIf="courseForm.hasError('required', 'teacher_name') && formDir.submitted">
+            Nombre del profesor es requerido.
+        </span>
+      </div>
     
     <div class="form-group row">
         <label class=" control-label col-md-12" for="name">Nombre del curso</label>
