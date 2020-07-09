@@ -1,5 +1,4 @@
 <app-navbar></app-navbar>
-<<<<<<< HEAD
 <h2>Lista de cursos</h2>
 
 <div>
@@ -36,7 +35,7 @@
 
         <td>
           <!--<a [routerLink]="['/student-detail/', s.studentId]"> Detail </a>-->
-          <a [routerLink]="['/course-update/']"> Edit </a>
+          <a [routerLink]="['/course-update', c.course_id]"> Edit </a>
           <!--<button (click)="update()" class="btn btn-primary"> Editar </button>-->
           <!--<a [routerLink]="" (click)="delete(s.studentId)"> Delete </a>-->
           <span *ngIf="confirmDelete">

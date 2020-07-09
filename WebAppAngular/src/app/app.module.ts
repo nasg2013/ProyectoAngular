@@ -18,11 +18,8 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CourseComponent } from './pages/course/course.component';
 import { CourseAddComponent } from './pages/course-add/course-add.component';
-<<<<<<< HEAD
 import { CourseUpdateComponent } from './pages/course-update/course-update.component';
-=======
 import { RequestConsultComponent } from './pages/request-consult/request-consult.component';
->>>>>>> e47acf50ad5d41cc634b5b73f02af79f2ff016bd
 
 
 @NgModule({
@@ -39,11 +36,8 @@ import { RequestConsultComponent } from './pages/request-consult/request-consult
     ProfileComponent,
     CourseComponent,
     CourseAddComponent,
-<<<<<<< HEAD
-    CourseUpdateComponent
-=======
+    CourseUpdateComponent,
     RequestConsultComponent
->>>>>>> e47acf50ad5d41cc634b5b73f02af79f2ff016bd
   ],
   imports: [
     BrowserModule,

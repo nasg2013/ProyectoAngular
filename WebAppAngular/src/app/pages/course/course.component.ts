@@ -32,9 +32,9 @@ export class CourseComponent implements OnInit {
     this.router.navigate(['/course-add']);
   }
 
-  update() {
-    this.router.navigate(['/course-update']);
-  }
+  /*update() {
+    this.router.navigate(['/course-update', this.courses.course_id]);
+  }*/
   
   delete(id) {
     this.rest.deleteCourse(id)
