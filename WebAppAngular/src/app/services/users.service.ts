@@ -19,8 +19,8 @@ const httpOptions = {
 })
 export class UsersService {
 
-  private _url = 'http://localhost:8080/api/users/';
-  private _urlrole = 'http://localhost:8080/api/role/';
+  private _url = 'https://demo-200709031357.azurewebsites.net/api/users/';
+  private _urlrole = 'https://demo-200709031357.azurewebsites.net/api/role/';
   constructor(private http: HttpClient) { }
 
   private extractData(res: Response) {

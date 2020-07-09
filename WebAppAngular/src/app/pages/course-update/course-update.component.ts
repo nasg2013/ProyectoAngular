@@ -14,7 +14,7 @@ export class CourseUpdateComponent implements OnInit {
   
   courseForm: FormGroup;
   errorMessage: any;
-
+  teachers: any = [];
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute,
     private rest:CourseService, private router: Router) {
@@ -41,6 +41,7 @@ export class CourseUpdateComponent implements OnInit {
       console.log(data);
       this.courseData = data;
     });
+    this.getTeachers();
   }
 
 
@@ -56,7 +57,11 @@ export class CourseUpdateComponent implements OnInit {
   }
 
 
-  
+    getTeachers() {
+    this.rest.getAll().subscribe((data: {}) => {
+      this.teachers = data;
+    });
+  }
 
   cancel() {
     this.router.navigate(['/course']);
