@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <h1 class="animated fadeInDownBig">Sección de consultas</h1>
-    <div class="row">
+    <div class="row m-5">
+        <h3 class="animated fadeInDownBig">Sección de consultas</h3>
         <ng-template ngFor let-item [ngForOf]="inquiries" let-i="index">
             <div *ngIf="userId == inquiries[i].teacherid" class="col-lg-4 col-md-6 col-sm-12 mt-5 animated fadeInUpBig">
                 <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">

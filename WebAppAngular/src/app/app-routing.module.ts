@@ -13,6 +13,7 @@ import { CourseComponent } from './pages/course/course.component';
 import { CourseAddComponent } from './pages/course-add/course-add.component';
 import { AdminGuard } from './guards/admin.guard';
 import { TeacherGuard } from './guards/teacher.guard';
+import { RequestConsultComponent } from './pages/request-consult/request-consult.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate:[ AuthGuard] },
   { path: 'course', component: CourseComponent, canActivate:[ AuthGuard, TeacherGuard] },
   { path: 'course-add', component: CourseAddComponent, canActivate:[ AuthGuard, TeacherGuard] },
+  { path: 'request-consult', component: RequestConsultComponent, canActivate:[ AuthGuard] },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 
 ];

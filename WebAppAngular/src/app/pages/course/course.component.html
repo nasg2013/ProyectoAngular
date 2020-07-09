@@ -1,39 +1,48 @@
 <app-navbar></app-navbar>
-<h2>Course List</h2>
+<div class="container">
 
-<div>
-  <button (click)="add()" class="btn btn-primary">
-    Add
-  </button>
+    <div class="row m-5">
+        <h3> Course List </h3>
+        <div class="col-12 m-2 animated fadeInUpBig">
+            <div>
+                <button (click)="add()" class="btn btn-primary">
+        Add
+      </button>
+            </div>
+
+            <table class='table' *ngIf="courses">
+                <thead>
+                    <tr>
+                        <th>Course_id</th>
+                        <th>Teacher_name</th>
+                        <th>Name</th>
+                        <th>Credit</th>
+                        <th>Description</th>
+                        <th>Schedule</th>
+                        <th>Acronyn</th>
+                        <th>Schedule_consultation</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let c of courses; let i=index;">
+
+                        <td>{{ c.course_id }}</td>
+                        <td>{{ c.teacher_name }}</td>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.credit }}</td>
+                        <td>{{ c.description }}</td>
+                        <td>{{ c.schedule }}</td>
+                        <td>{{ c.acronyn }}</td>
+                        <td>{{ c.schedule_consultation }}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
 </div>
-
-<table class='table' *ngIf="courses">
-<thead>
-  <tr>
-    <th>Course_id</th>
-    <th>Teacher_name</th>
-    <th>Name</th>
-    <th>Credit</th>
-    <th>Description</th>
-    <th>Schedule</th>
-    <th>Acronyn</th>
-    <th>Schedule_consultation</th>
-  </tr>
-
-</thead>
-<tbody>
-
-  <tr *ngFor="let c of courses; let i=index;">
-
-    <td>{{ c.course_id  }}</td>
-    <td>{{ c.teacher_name  }}</td>
-    <td>{{ c.name  }}</td>
-    <td>{{ c.credit  }}</td>
-    <td>{{ c.description  }}</td>
-    <td>{{ c.schedule  }}</td>
-    <td>{{ c.acronyn  }}</td>
-    <td>{{ c.schedule_consultation  }}</td>
-
-  </tr>
-
-</tbody>
