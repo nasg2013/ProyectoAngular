@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-const endpoint = 'http://localhost:8080/';
+
+const endpoint = 'https://demo-200709031357.azurewebsites.net/';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -15,7 +17,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CourseService {
-
+  private _url = 'https://demo-200709031357.azurewebsites.net/api/users/';
   constructor(private http: HttpClient) { 
     
   }
@@ -59,6 +61,13 @@ export class CourseService {
       tap((student) => console.log('updated course')),
       catchError(this.handleError<any>('updateCourse'))
     );
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get(this._url + 'getAll/').pipe(
+      map(this.extractData),
+      catchError(this.handleError<any>('getAll'))
+      );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

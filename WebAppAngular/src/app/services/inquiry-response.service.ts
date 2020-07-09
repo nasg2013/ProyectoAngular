@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class InquiryResponseService {
 
-  private _url = 'http://localhost:8080/api/inquiryresponse/';
+  private _url = 'https://demo-200709031357.azurewebsites.net/api/inquiryresponse/';
 
   constructor(private http: HttpClient) { }
 
