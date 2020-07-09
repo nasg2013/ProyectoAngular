@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   commentNewsUsers: any = [];
   newCommentNewsUsers: any;
   userId: number;
+  user:any;
 
   constructor(   
                 private router: Router, 
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
     this.commentNewsUsers = new Array<CommentNewUserModel>();
     this.newCommentNewsUsers = new CommentNewUserModel();
     this.newCommentNews = new CommentNewModel();
+    this.user=new UserModel();
     this.loadProfile();
     this.getCommentNews();       
     this.getCommentNewsUsers();    
@@ -81,6 +83,10 @@ export class HomeComponent implements OnInit {
     this.profile.getAll()
     .subscribe( resp=>{
       this.users=resp;    
+    });
+
+    this.profile.getById(localStorage.getItem('token')).subscribe((data: {}) => {
+      this.user = data;
     });
 
   }

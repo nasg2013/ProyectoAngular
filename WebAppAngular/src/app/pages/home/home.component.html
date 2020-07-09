@@ -4,7 +4,7 @@
         <h3>Noticias de la carrera</h3>
 
 
-        <div class="form-group col-12">
+        <div *ngIf="user.password == 'Admin'" class="form-group col-12">
             <a title="Publicar Noticia" class="btn btn-warning btn-lg" (click)="response()">Publicar noticia</a>
         </div>
 

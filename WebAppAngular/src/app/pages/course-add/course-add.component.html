@@ -1,23 +1,23 @@
 <app-navbar></app-navbar>
+<div class="container limiter animated fadeInLeft m-5">
+    <div class="row">
+        <h3 class="animated fadeInDownBig">Añadir curso</h3>
+        <div class="col-12">
+            <form [formGroup]="courseForm" (ngSubmit)="addCourse()" #formDir="ngForm">
 
-
-<h2 class="animated fadeInDownBig">Añadir curso</h2>
-
-<form [formGroup]="courseForm" (ngSubmit)="addCourse()" #formDir="ngForm">
-
-    <div class="form-group row">
-        <label class="control-label col-md-12" for="teacher_name">Nombre del profesor</label>
-        <div class="col-md-4">
-          <select class="form-control form-control-sm"  formControlName="teacher_name">  
+                <div class="form-group row">
+                    <label class="control-label col-md-12" for="teacher_name">Nombre del profesor</label>
+                    <div class="col-md-4">
+                        <select class="form-control form-control-sm" formControlName="teacher_name">  
             <option *ngFor="let teacher of teachers" value="{{teacher.name}}">{{teacher.name}}</option>
           </select><br>
-        </div>  
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'teacher_name') && formDir.submitted">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'teacher_name') && formDir.submitted">
             Nombre del profesor es requerido.
         </span>
-      </div>
-      
-    <!--<div class="form-group row">
+                </div>
+
+                <!--<div class="form-group row">
     
         <label class=" control-label col-md-12" for="teacher_name">Nombre del profesor</label>
         <div class="col-md-4">
@@ -27,78 +27,80 @@
             Nombre del profesor es requerido.
         </span>
     </div>-->
-    
-    <div class="form-group row">
-        <label class=" control-label col-md-12" for="name">Nombre del curso</label>
-        <div class="col-md-4">
-          <input class="form-control" type="text" formControlName="name">
-        </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'name') && formDir.submitted">
+
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="name">Nombre del curso</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" formControlName="name">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'name') && formDir.submitted">
             Nombre del curso es requerido.
         </span>
-    </div>
+                </div>
 
-    
-    <div class="form-group row">
-        <label class=" control-label col-md-12" for="credit">Creditos</label>
-        <div class="col-md-4">
-          <input class="form-control" type="text" formControlName="credit">
-        </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'credit') && formDir.submitted">
+
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="credit">Creditos</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" formControlName="credit">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'credit') && formDir.submitted">
             Creditos es requerido.
         </span>
-        <span class="text-danger" *ngIf="courseForm.hasError('pattern', 'credit') && formDir.submitted">
+                    <span class="text-danger" *ngIf="courseForm.hasError('pattern', 'credit') && formDir.submitted">
             Al menos un dígito.
         </span>
-    </div>
-    
-    <div class="form-group row">
-        <label class=" control-label col-md-12" for="Description">Descripción</label>
-        <div class="col-md-4">
-          <input class="form-control" type="text" formControlName="description">
-        </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'description') && formDir.submitted">
+                </div>
+
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="Description">Descripción</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" formControlName="description">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'description') && formDir.submitted">
             Descripción es requerido.
         </span>
-    </div>
+                </div>
 
-    
-    <div class="form-group row">
-        <label class=" control-label col-md-12" for="schedule">Horario</label>
-        <div class="col-md-4">
-          <input class="form-control" type="text" formControlName="schedule">
-        </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'schedule') && formDir.submitted">
+
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="schedule">Horario</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" formControlName="schedule">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'schedule') && formDir.submitted">
             Horario es requerido.
         </span>
-    </div>
+                </div>
 
-    
-    <div class="form-group row">
-        <label class=" control-label col-md-12" for="acronyn">Acrónimo</label>
-        <div class="col-md-4">
-          <input class="form-control" type="text" formControlName="acronyn">
-        </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'acronyn') && formDir.submitted">
+
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="acronyn">Acrónimo</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" formControlName="acronyn">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'acronyn') && formDir.submitted">
             Acrónimo es requerido.
         </span>
-    </div>
+                </div>
 
-    <div class="form-group row">
-        <label class=" control-label col-md-12" for="schedule_consultation">Horario de consulta</label>
-        <div class="col-md-4">
-          <input class="form-control" type="text" formControlName="schedule_consultation">
-        </div>
-        <span class="text-danger" *ngIf="courseForm.hasError('required', 'schedule_consultation') && formDir.submitted">
+                <div class="form-group row">
+                    <label class=" control-label col-md-12" for="schedule_consultation">Horario de consulta</label>
+                    <div class="col-md-4">
+                        <input class="form-control" type="text" formControlName="schedule_consultation">
+                    </div>
+                    <span class="text-danger" *ngIf="courseForm.hasError('required', 'schedule_consultation') && formDir.submitted">
             Horario de consulta es requerido.
         </span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
+
     </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
-    </div>
-
-</form>  
-
-
+</div>

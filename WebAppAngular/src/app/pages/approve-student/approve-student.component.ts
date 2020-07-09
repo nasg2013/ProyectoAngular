@@ -12,18 +12,22 @@ import Swal from 'sweetalert2';
 export class ApproveStudentComponent implements OnInit {
 
   users: any = [];
-  userRole: any;
+  userRole: any; 
+
+
   constructor( private usersService: UsersService) { 
 
     this.users = new Array<UserModel>();
-    this.getNewsUsers();
     this.userRole = new UserRoleModel();
+    this.getNewsUsers();
+    
   }
 
   ngOnInit(): void {
   }
 
   getNewsUsers(){
+
     this.usersService.getNewUsers().subscribe((data: {}) => {
       this.users = data;
     });
@@ -61,7 +65,7 @@ export class ApproveStudentComponent implements OnInit {
     
     
     this.userRole.usersid = usersId;
-    this.userRole.roleid = 3; //StudentRole = 3
+    this.userRole.roleid = 2; //StudentRole = 2
 
     this.usersService.approveUser(this.userRole)
     .subscribe(resp=>{
