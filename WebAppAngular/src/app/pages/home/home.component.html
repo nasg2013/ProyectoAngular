@@ -9,31 +9,41 @@
                     <textarea class="form-control" id="commentnew" rows="3" readonly>
                     {{ commentNews[i].content }}
                     </textarea>
-                    <span>Creado: {{ commentNews[i].creationUser }} - <small> - {{ commentNews[i].creationDate }}</small></span>
+                    <ng-template ngFor let-item [ngForOf]="users" let-u="index">
+                        <span *ngIf="users[u].usersId == commentNews[i].creationUserId ">Creado por: {{ users[u].name }} - <small> - {{ commentNews[i].creationDate }}</small></span>
+                    </ng-template>
                 </div>
 
                 <ng-template ngFor let-item [ngForOf]="commentNewsUsers" let-j="index">
                     <div *ngIf="commentNews[i].commentNewId == commentNewsUsers[j].commentNewId" class="form-group">
                         <label for="commentnewuser">Comentario:</label>
-                        <textarea class="form-control rounded" id="commentnewuser" rows="1" readonly>
+                        <textarea class="form-control rounded" id="commentnewuser" rows="2" readonly>
                             {{ commentNewsUsers[j].content }}
                         </textarea>
-                        <span>Creado: {{ commentNewsUsers[j].creationUser }} - <small> - {{ commentNewsUsers[j].creationDate }}</small></span>
+                        <ng-template ngFor let-item [ngForOf]="users" let-u="index">
+                            <span *ngIf="users[u].usersId == commentNewsUsers[j].creationUser ">Comentado por: {{ users[u].name }} - <small> - {{ commentNewsUsers[j].creationDate | date }}</small></span>
+                        </ng-template>
+
                     </div>
                 </ng-template>
 
+                <form (ngSubmit)="comment(form)" #form="ngForm">
+                    <div class="input-group">
+                        <input [ngModel]="commentNews[i].commentNewId" name="commentNewUserId" required readonly hidden>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label for="commentNewUserContent">Comentar:</label>
+                            <textarea [class.is-invalid]="form.invalid && form.touched" ngModel class="form-control rounded" name="commentNewUserContent" rows="2" cols="90" required minlength="5">
+                               
+                            </textarea>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-warning btn-sm" type="submit">Comentar</button>
+                        </div>
+                    </div>
+                </form>
 
-                <div class="input-group">
-                    <div class="form-group">
-                        <label for="commentnewuser">Comentar:</label>
-                        <textarea class="form-control rounded" id="commentnewuser" rows="2" cols="90">
-                           
-                        </textarea>
-                    </div>
-                    <div class="input-group-append">
-                        <button (click)="comment(commentNews[i].commentNewId)" class="btn btn-outline-warning btn-sm" type="button">Comentar</button>
-                    </div>
-                </div>
 
             </div>
         </ng-template>

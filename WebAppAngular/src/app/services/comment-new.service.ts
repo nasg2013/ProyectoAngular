@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
+import { CommentNewUserModel } from '../models/comment-new-user.model';
 
 
 const endpoint = 'https://localhost:44355/api/';
@@ -37,6 +38,14 @@ export class CommentNewService {
       map(this.extractData),
       catchError(this.handleError<any>('getAllCommentNewUser'))
       );
+  }
+
+  addCommnetNewUser(commentNewUser: CommentNewUserModel): Observable<any>{
+    commentNewUser.Status = "A";
+    return this.http.post<any>(endpoint + 'CommentNewUser/PostCommentNewUser', JSON.stringify(commentNewUser), httpOptions).pipe(
+      tap((inquiry) => console.log('addCommnetNewUser')),
+      catchError(this.handleError<any>('error addCommnetNewUser'))
+    );
   }
 
 
