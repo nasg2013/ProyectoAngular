@@ -13,6 +13,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InquiryComponent } from './pages/inquiry/inquiry.component';
 import { InquiryResponseComponent } from './pages/inquiry-response/inquiry-response.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ApproveStudentComponent } from './pages/approve-student/approve-student.component';
+import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CourseComponent } from './pages/course/course.component';
+import { CourseAddComponent } from './pages/course-add/course-add.component';
+import { CourseUpdateComponent } from './pages/course-update/course-update.component';
+import { RequestConsultComponent } from './pages/request-consult/request-consult.component';
 
 
 @NgModule({
@@ -23,7 +30,14 @@ import { HomeComponent } from './pages/home/home.component';
     NavbarComponent,
     InquiryComponent,
     InquiryResponseComponent,
-    HomeComponent
+    HomeComponent,
+    ApproveStudentComponent,
+    CreateUserComponent,
+    ProfileComponent,
+    CourseComponent,
+    CourseAddComponent,
+    CourseUpdateComponent,
+    RequestConsultComponent
   ],
   imports: [
     BrowserModule,

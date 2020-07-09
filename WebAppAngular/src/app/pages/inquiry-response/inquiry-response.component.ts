@@ -19,9 +19,10 @@ export class InquiryResponseComponent implements OnInit {
 
   inquiries: any = [];
   inquiriesResponse: any = [];
-  inquiryResponse: any;
   users: any = [];
+  inquiryResponse: any;
   userId: number;
+  cantMessage:number=0;
 
   constructor(
               private inquiryResponseService: InquiryResponseService,
@@ -42,16 +43,20 @@ export class InquiryResponseComponent implements OnInit {
   }  
   
   getAllInquiriesResponse() {
+
     this.inquiryResponseService.getAll().subscribe((data: {}) => {
-      this.inquiriesResponse = data;
-      console.log(this.inquiriesResponse);
+    this.inquiriesResponse = data;
     });
   }
 
   getAllInquiries() {
     this.inquiryService.getAll().subscribe((data: {}) => {
       this.inquiries = data;
-      console.log(this.inquiries);
+      this.inquiries.forEach(inquiry => {
+        if(inquiry.teacherid == this.userId){
+          this.cantMessage ++;
+        }
+      });
     });
   }
 

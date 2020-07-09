@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row m-5">
+        <h3>Solicitud horas de consulta</h3>
+        <div class="col-12 m-2 card bg-dark text-white card-header animated fadeInDownBig">
+            <form autocomplete="false" [formGroup]="form" (ngSubmit)="onSumit()">
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Cursos</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Seleccione un curso...</option>
+                          <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-0" hidden>
+                        <label for="inputEmail4">Profesor</label>
+                        <input type="text" class="form-control" id="teacherId" readonly>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Profesor</label>
+                        <input type="text" class="form-control" id="teacherName" readonly>
+                    </div>
+
+
+
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Día</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Seleccione un día...</option>
+                          <option>Lunes</option>
+                          <option>Martes</option>
+                          <option>Miércoles</option>
+                          <option>Jueves</option>
+                          <option>Viernes</option>
+                          <option>Sábado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Hora</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Seleccione una hora...</option>
+                          <option>7:00 a.m.</option>
+                          <option>8:00 a.m.</option>
+                          <option>9:00 a.m.</option>
+                          <option>10:00 a.m.</option>
+                          <option>11:00 a.m.</option>
+                          <option>1:00 p.m.</option>
+                          <option>2:00 p.m.</option>
+                          <option>3:00 p.m.</option>
+                          <option>4:00 p.m.</option>
+                        </select>
+                    </div>
+
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
