@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
-<h2>Lista de cursos</h2>
+<h2 class="animated fadeInDownBig">Lista de cursos</h2>
 
 <div>
-  <button (click)="add()" class="btn btn-primary">
+  <button (click)="add()" class="btn btn-primary" name="flash">
     Añadir
   </button>
 </div>
@@ -37,8 +37,8 @@
 
         <td>
           <!--<a [routerLink]="['/student-detail/', s.studentId]"> Detail </a>-->
-          <a [routerLink]="['/course-update', c.course_id]"> Edit </a>
-          <!--<button (click)="update()" class="btn btn-primary"> Editar </button>-->
+          <!--<a [routerLink]="['/course-update', c.course_id]"> Edit </a>-->
+          <button [routerLink]="['/course-update', c.course_id]" class="btn btn-primary"> Editar </button>
           <!--<a [routerLink]="" (click)="delete(s.studentId)"> Delete </a>-->
           <span *ngIf="confirmDelete">
             <span>¿Estás seguro que lo quieres borrar?</span>
