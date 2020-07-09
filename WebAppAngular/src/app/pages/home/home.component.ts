@@ -48,9 +48,9 @@ export class HomeComponent implements OnInit {
 
     const { value: text } = await Swal.fire({
       input: 'textarea',
-      inputPlaceholder: 'Type your message here...',
+      inputPlaceholder: 'Escribe una noticia...',
       inputAttributes: {
-        'aria-label': 'Type your message here'
+        'aria-label': 'Escribe una noticia...'
       },
       showCancelButton: true
     })
