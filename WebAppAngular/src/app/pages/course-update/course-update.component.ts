@@ -12,7 +12,7 @@ export class CourseUpdateComponent implements OnInit {
 
   @Input() courseData:any = { name:'', description: '', schedule_consultation: '', credit: 0, schedule: '', course_id: 0, teacher_name: '', acronyn: ''};
   
-  courseForm: FormGroup;
+  courseForm2: FormGroup;
   errorMessage: any;
   teachers: any = [];
 
@@ -20,7 +20,7 @@ export class CourseUpdateComponent implements OnInit {
     private rest:CourseService, private router: Router) {
     
 
-      this.courseForm = this.fb.group({
+      this.courseForm2 = this.fb.group({
         course_id: 0,
         teacher_name: ['', [Validators.required]],
         name: ['', [Validators.required]],
@@ -37,16 +37,18 @@ export class CourseUpdateComponent implements OnInit {
 }
 
   ngOnInit() {
+    this.getTeachers();
+    
     this.rest.getCourse(this.route.snapshot.params['course_id']).subscribe((data: {}) => {
       console.log(data);
       this.courseData = data;
     });
-    this.getTeachers();
+    
   }
 
 
   updateStudent() {
-    if (!this.courseForm.valid) {
+    if (!this.courseForm2.valid) {
       return;
     }
     this.rest.updateCourse(this.courseData).subscribe((result) => {
@@ -57,7 +59,7 @@ export class CourseUpdateComponent implements OnInit {
   }
 
 
-    getTeachers() {
+  getTeachers() {
     this.rest.getAll().subscribe((data: {}) => {
       this.teachers = data;
     });
@@ -68,12 +70,12 @@ export class CourseUpdateComponent implements OnInit {
   }
 
   /*get course_id() { return this.courseForm.get('Course_id'); }*/
-  get teacher_name() { return this.courseForm.get('teacher_name'); }
-  get name() { return this.courseForm.get('name'); }
-  get credit() { return this.courseForm.get('credit'); }
-  get description() { return this.courseForm.get('description'); }
-  get schedule() { return this.courseForm.get('schedule'); }
-  get acronyn() { return this.courseForm.get('acronyn'); }
-  get schedule_consultation() { return this.courseForm.get('schedule_consultation'); }
+  get teacher_name() { return this.courseForm2.get('teacher_name'); }
+  get name() { return this.courseForm2.get('name'); }
+  get credit() { return this.courseForm2.get('credit'); }
+  get description() { return this.courseForm2.get('description'); }
+  get schedule() { return this.courseForm2.get('schedule'); }
+  get acronyn() { return this.courseForm2.get('acronyn'); }
+  get schedule_consultation() { return this.courseForm2.get('schedule_consultation'); }
 
 }
