@@ -15,9 +15,14 @@ import { InquiryResponseComponent } from './pages/inquiry-response/inquiry-respo
 import { HomeComponent } from './pages/home/home.component';
 import { ApproveStudentComponent } from './pages/approve-student/approve-student.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { CourseComponent } from './pages/course/course.component';
 import { CourseAddComponent } from './pages/course-add/course-add.component';
+<<<<<<< HEAD
 import { CourseUpdateComponent } from './pages/course-update/course-update.component';
+=======
+import { RequestConsultComponent } from './pages/request-consult/request-consult.component';
+>>>>>>> e47acf50ad5d41cc634b5b73f02af79f2ff016bd
 
 
 @NgModule({
@@ -31,9 +36,14 @@ import { CourseUpdateComponent } from './pages/course-update/course-update.compo
     HomeComponent,
     ApproveStudentComponent,
     CreateUserComponent,
+    ProfileComponent,
     CourseComponent,
     CourseAddComponent,
+<<<<<<< HEAD
     CourseUpdateComponent
+=======
+    RequestConsultComponent
+>>>>>>> e47acf50ad5d41cc634b5b73f02af79f2ff016bd
   ],
   imports: [
     BrowserModule,

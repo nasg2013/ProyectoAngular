@@ -22,6 +22,7 @@ export class InquiryResponseComponent implements OnInit {
   users: any = [];
   inquiryResponse: any;
   userId: number;
+  cantMessage:number=0;
 
   constructor(
               private inquiryResponseService: InquiryResponseService,
@@ -42,14 +43,20 @@ export class InquiryResponseComponent implements OnInit {
   }  
   
   getAllInquiriesResponse() {
+
     this.inquiryResponseService.getAll().subscribe((data: {}) => {
-      this.inquiriesResponse = data;
+    this.inquiriesResponse = data;
     });
   }
 
   getAllInquiries() {
     this.inquiryService.getAll().subscribe((data: {}) => {
       this.inquiries = data;
+      this.inquiries.forEach(inquiry => {
+        if(inquiry.teacherid == this.userId){
+          this.cantMessage ++;
+        }
+      });
     });
   }
 

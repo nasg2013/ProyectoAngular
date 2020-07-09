@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { UserModel } from '../models/user.model';
+import { UsersService } from './users.service';
 
 
 const httpOptions = {
@@ -20,14 +21,24 @@ export class AuthService {
 
   userToken: string;
   date: any;
+  user: any;
 
-  constructor( private http: HttpClient) {
+  constructor( private usersService: UsersService, private http: HttpClient) {
+    this.user = new UserModel() ;
     this.readToken();
-     }
+    this.getUser();
+  }
 
   private extractData(res: Response) {
     let body = res;
     return body || { };
+  }
+
+  getUser(){
+    this.usersService.getById(parseInt(this.userToken))
+    .subscribe( resp=>{
+      this.user=resp;
+    });
   }
 
   logout(){
@@ -78,6 +89,17 @@ export class AuthService {
 
   isLogin(): boolean{
     return parseInt( this.userToken) > 0;
+  }
+
+  haveRole(role:string): boolean{
+    
+    
+    console.log(role);
+    console.log(this.user);
+
+    if(role === this.user.password){
+      return true;
+    }
   }
 
    private handleError<T> (operation = 'operation', result?: T) {
