@@ -55,7 +55,7 @@ export class CourseService {
   }
 
   updateCourse (course): Observable<any> {
-    return this.http.put(endpoint + 'apiCourse/update/', JSON.stringify(course), httpOptions).pipe(
+    return this.http.put(endpoint + 'apiCourse/put/', JSON.stringify(course), httpOptions).pipe(
       tap((student) => console.log('updated course')),
       catchError(this.handleError<any>('updateCourse'))
     );
