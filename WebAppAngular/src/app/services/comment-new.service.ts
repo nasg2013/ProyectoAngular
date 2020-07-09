@@ -3,9 +3,11 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { CommentNewUserModel } from '../models/comment-new-user.model';
+import { CommentNewModel } from '../models/comment-new.model';
 
 
-const endpoint = 'https://localhost:44355/api/';
+//const endpoint = 'https://localhost:44355/api/';
+const endpoint = 'https://informaticaempresarialapi.azurewebsites.net/api/';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -45,6 +47,14 @@ export class CommentNewService {
     return this.http.post<any>(endpoint + 'CommentNewUser/PostCommentNewUser', JSON.stringify(commentNewUser), httpOptions).pipe(
       tap((inquiry) => console.log('addCommnetNewUser')),
       catchError(this.handleError<any>('error addCommnetNewUser'))
+    );
+  }
+
+  addCommnetNew(commentNew: CommentNewModel): Observable<any>{
+
+    return this.http.post<any>(endpoint + 'CommentNew/PostCommentNew', JSON.stringify(commentNew), httpOptions).pipe(
+      tap((inquiry) => console.log('addCommnetNew')),
+      catchError(this.handleError<any>('error addCommnetNew'))
     );
   }
 
