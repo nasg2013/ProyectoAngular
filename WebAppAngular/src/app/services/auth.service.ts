@@ -92,11 +92,6 @@ export class AuthService {
   }
 
   haveRole(role:string): boolean{
-    
-    
-    console.log(role);
-    console.log(this.user);
-
     if(role === this.user.password){
       return true;
     }

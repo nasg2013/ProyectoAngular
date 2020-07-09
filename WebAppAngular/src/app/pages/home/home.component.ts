@@ -19,8 +19,10 @@ export class HomeComponent implements OnInit {
 
   users: any=[];
   commentNews: any = [];
+  newCommentNews: any;
   commentNewsUsers: any = [];
   newCommentNewsUsers: any;
+  userId: number;
 
   constructor(   
                 private router: Router, 
@@ -32,12 +34,47 @@ export class HomeComponent implements OnInit {
     this.commentNews = new Array<CommentNewModel>();
     this.commentNewsUsers = new Array<CommentNewUserModel>();
     this.newCommentNewsUsers = new CommentNewUserModel();
+    this.newCommentNews = new CommentNewModel();
     this.loadProfile();
     this.getCommentNews();       
-    this.getCommentNewsUsers();       
+    this.getCommentNewsUsers();    
+    this.userId = parseInt(localStorage.getItem('token'));   
   }
 
   ngOnInit(): void {
+  }
+
+  async response(){
+
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputPlaceholder: 'Type your message here...',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    })
+    
+    if (text) {
+      Swal.fire(text);
+
+      this.newCommentNews.CreationUserId=this.userId;
+      this.newCommentNews.Content=text;
+      this.newCommentNews.CreationDate=new Date();
+
+      this.commentNewService.addCommnetNew(this.newCommentNews)
+      .subscribe(resp=>{   
+        
+        if(resp){
+          this.loadProfile();
+          this.getCommentNews();       
+          this.getCommentNewsUsers(); 
+        }
+
+
+      });
+
+    }
   }
 
   loadProfile(){
@@ -61,7 +98,6 @@ export class HomeComponent implements OnInit {
       this.commentNewsUsers = resp;
     })
   }
-
 
   delete(commentNewId){
 
@@ -96,23 +132,17 @@ export class HomeComponent implements OnInit {
     if(form.valid){
       this.newCommentNewsUsers.CommentNewId = form.value.commentNewUserId;
       this.newCommentNewsUsers.CreationDate = new Date();
-      this.newCommentNewsUsers.CreationUserId = this.authService.getUser();
+      this.newCommentNewsUsers.CreationUser = this.userId;
       this.newCommentNewsUsers.Content = form.value.commentNewUserContent;
-      console.log(this.newCommentNewsUsers);
-
       this.commentNewService.addCommnetNewUser(this.newCommentNewsUsers)
       .subscribe(resp=>{
         if(resp){
-          Swal.fire(
-            'Comentario realizado',
-            'Gracias...',
-            'success'
-          )
           this.loadProfile();
           this.getCommentNews();       
           this.getCommentNewsUsers(); 
         }
       });
+      
     }
         
     

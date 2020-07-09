@@ -2,11 +2,17 @@
 <div class="container limiter animated fadeInLeft">
     <div class="row m-5">
         <h3>Noticias de la carrera</h3>
+
+
+        <div class="form-group col-12">
+            <a title="Publicar Noticia" class="btn btn-warning btn-lg" (click)="response()">Publicar noticia</a>
+        </div>
+
         <ng-template ngFor let-item [ngForOf]="commentNews" let-i="index">
-            <div class="col-12 m-2 card bg-dark text-white card-header animated fadeInDownBig">
+            <div class="col-12 m-2 card bg-dark text-white card-header">
                 <div class="form-group">
-                    <label for="commentnew">Noticia # {{ commentNews[i].commentNewId }}</label>
-                    <textarea class="form-control" id="commentnew" rows="3" readonly>
+                    <h3 for="commentnew">Noticia # {{ commentNews[i].commentNewId }}</h3>
+                    <textarea class="form-control" id="commentnew" rows="3" readonly style="color: darkblue;font-size: 1.5rem;">
                     {{ commentNews[i].content }}
                     </textarea>
                     <ng-template ngFor let-item [ngForOf]="users" let-u="index">

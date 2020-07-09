@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'inquiry', component: InquiryComponent, canActivate:[ AuthGuard] },
-  { path: 'inquiry-response', component: InquiryResponseComponent , canActivate:[ AuthGuard , AdminGuard , TeacherGuard] },
+  { path: 'inquiry-response', component: InquiryResponseComponent , canActivate:[ AuthGuard , TeacherGuard] },
   { path: 'home', component: HomeComponent, canActivate:[ AuthGuard ] },
   { path: 'approve-student', component: ApproveStudentComponent, canActivate:[ AuthGuard , AdminGuard] },
   { path: 'create-user', component: CreateUserComponent, canActivate:[ AuthGuard, AdminGuard] },
